@@ -31,7 +31,7 @@ class UserRegistrationView(generics.CreateAPIView):
         return Response(response_data, status=status.HTTP_201_CREATED)
 
 class UserLoginView(TokenObtainPairView):
-    pass
+    serializer_class = CustomTokenObtainPairSerializer
 
 class TokenRefreshView(TokenRefreshView):
     pass
