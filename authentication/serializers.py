@@ -46,6 +46,6 @@ class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
             'id': user.id,
             'username': user.username,
             'email': user.email,
-            'name': getattr(user, 'first_name', '')  # Assuming you have a 'name' field in your UserProfile
+            'name': getattr(user, 'first_name', '')
         }
         return data

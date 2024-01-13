@@ -3,7 +3,7 @@ from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 from rest_framework import generics, permissions, status
 from rest_framework.response import Response
 from django.contrib.auth.models import User
-from rest_framework.authtoken.models import Token  # Add this import
+from rest_framework.authtoken.models import Token
 from .models import UserProfile
 from .serializers import UserSerializer, UserProfileSerializer
 from rest_framework_simplejwt.views import TokenObtainPairView
@@ -21,13 +21,13 @@ class UserRegistrationView(generics.CreateAPIView):
     permission_classes = (permissions.AllowAny,)
 
     def create(self, request, *args, **kwargs):
-        print("Request Data:", request.data)  # Add this line for debugging
+        print("Request Data:", request.data)  
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         user = serializer.save()
 
         response_data = serializer.data
-        print("Response Data:", response_data)  # Add this line for debugging
+        print("Response Data:", response_data)  
         return Response(response_data, status=status.HTTP_201_CREATED)
 
 class UserLoginView(TokenObtainPairView):
